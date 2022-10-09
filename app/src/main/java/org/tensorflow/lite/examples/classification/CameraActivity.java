@@ -254,24 +254,7 @@ public abstract class CameraActivity extends AppCompatActivity
           public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
         });
 
-    recognitionTextView = findViewById(R.id.detected_item);
-//    recognitionValueTextView = findViewById(R.id.detected_item_value);
-//    recognition1TextView = findViewById(R.id.detected_item1);
-//    recognition1ValueTextView = findViewById(R.id.detected_item1_value);
-//    recognition2TextView = findViewById(R.id.detected_item2);
-//    recognition2ValueTextView = findViewById(R.id.detected_item2_value);
-
-//    frameValueTextView = findViewById(R.id.frame_info);
-//    cropValueTextView = findViewById(R.id.crop_info);
-//    cameraResolutionTextView = findViewById(R.id.view_info);
-//    rotationTextView = findViewById(R.id.rotation_info);
-//    inferenceTimeTextView = findViewById(R.id.inference_info);
-
-//    modelSpinner.setOnItemSelectedListener(this);
-//    deviceSpinner.setOnItemSelectedListener(this);
-
-//    plusImageView.setOnClickListener(this);
-//    minusImageView.setOnClickListener(this);
+   
 
 //    model = Model.valueOf(modelSpinner.getSelectedItem().toString().toUpperCase());
 //    device = Device.valueOf(deviceSpinner.getSelectedItem().toString());
@@ -303,17 +286,7 @@ public abstract class CameraActivity extends AppCompatActivity
   }
   ////////////////////////////////////onCreate() Ends Here///////////////////////////////////////////////////
 
-  protected int[] getRgbBytes() {
-    imageConverter.run();
-    return rgbBytes;
-  }
-
-  protected int getLuminanceStride() {
-    return yRowStride;
-  }
-
-  protected byte[] getLuminance() {
-    return yuvBytes[0];
+rn yuvBytes[0];
   }
 
   /** Callback for android.hardware.Camera API */
@@ -338,28 +311,7 @@ public abstract class CameraActivity extends AppCompatActivity
       return;
     }
 
-    isProcessingFrame = true;
-    yuvBytes[0] = bytes;
-    yRowStride = previewWidth;
-
-    imageConverter =
-        new Runnable() {
-          @Override
-          public void run() {
-            ImageUtils.convertYUV420SPToARGB8888(bytes, previewWidth, previewHeight, rgbBytes);
-          }
-        };
-
-    postInferenceCallback =
-        new Runnable() {
-          @Override
-          public void run() {
-            camera.addCallbackBuffer(bytes);
-            isProcessingFrame = false;
-          }
-        };
-    processImage();
-  }
+   
 
   /** Callback for Camera2 API */
   @Override
